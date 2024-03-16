@@ -105,11 +105,11 @@ class PlayList {
      * returns true.
      */
     public boolean add(int i, Track track) {
-        if (i < 0 || i >= size || size == maxSize) {
+        if (i < 0 || i > size || size == maxSize) {
             return false;
         }
-        for (int j = 0; j < size; j++) {
-            tracks[j] = tracks[j - 1];
+        for (int j = size - 1; j <= i; j--) {
+            tracks[j + 1] = tracks[j];
         }
         tracks[i] = track;
         size++;
